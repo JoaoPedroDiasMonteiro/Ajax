@@ -13,10 +13,18 @@
     <script>
 
         function requisitarPagina(params) {
+            // requisição não iniciada, state = 0
             let ajax = new XMLHttpRequest();
+            console.log(ajax.readyState);
+            // conexão estabelecida com o servidor, state = 1
             ajax.open('GET', params)
+            console.log(ajax.readyState);
+            //
+            ajax.onreadystatechange = () => {
+                console.log(ajax.readyState); 
+            }
             ajax.send();
-            console.log(ajax);
+
         }
 
 
