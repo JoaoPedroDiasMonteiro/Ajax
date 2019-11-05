@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="xmltojson.js"></script>
+
     <script>
         function getFilmes(params) {
             let xmlHtpp = new XMLHttpRequest
@@ -20,7 +22,12 @@
                 if (xmlHtpp.readyState == 4 && xmlHtpp.status == 200) {
                     let xmlFilmes = xmlHtpp.responseText
                     console.log(xmlFilmes);
-
+                    let parser = new DOMParser
+                    domfilmes = parser.parseFromString(xmlFilmes,'text/xml')
+                    console.log(domfilmes);
+                    jsonfilmes = xmlToJson(domfilmes)
+                    console.log(jsonfilmes);
+                    
                 } else if (xmlHtpp.readyState == 4 && xmlHtpp.status == 200) {
                     console.log('bbb');
                 }
