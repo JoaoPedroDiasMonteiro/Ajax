@@ -13,6 +13,13 @@
     <script>
 
         function requisitarPagina(params) {
+            let imgLoading = document.createElement('img')
+            imgLoading.src = 'loading.gif'
+            imgLoading.className = 'rounded mx-auto d-block'
+            
+            document.getElementById('conteudo').innerHTML = ''
+            document.getElementById('conteudo').appendChild(imgLoading)
+
             // requisição não iniciada, state = 0
             let ajax = new XMLHttpRequest();
             console.log(ajax.readyState);
@@ -21,7 +28,8 @@
             console.log(ajax.readyState);
             //
             ajax.onreadystatechange = () => {
-                console.log(ajax.readyState); 
+                console.log(ajax.readyState);
+                imgLoading.remove()
             }
             ajax.send();
 
@@ -59,7 +67,7 @@
         <div class="row">
             <div class="col-md-1"></div>
 
-            <div class="col-md-10">
+            <div class="col-md-10" id="conteudo">
 
             </div>
 
