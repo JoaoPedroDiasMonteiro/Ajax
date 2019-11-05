@@ -29,10 +29,12 @@
             //
             ajax.onreadystatechange = () => {
                 if (ajax.readyState == 4 && ajax.status == 200) {
+                    document.getElementById('conteudo').innerHTML = ajax.responseText
+
                     imgLoading.remove()
                 } else if (ajax.readyState == 4 && ajax.status == 404) {
                     imgLoading.remove()
-                    document.getElementById('conteudo').innerHTML = 'Deu erro xd'
+                    document.getElementById('conteudo').innerHTML = 'tente novamente mais tarde...'
                 }
                 console.log(ajax.readyState);
                 console.log(ajax.status);
@@ -63,7 +65,7 @@
         <div class="row mb-2">
             <div class="col-md-4 center"></div>
             <div class="col-md-4 center">
-                <a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_15_conteudo.html')">Página 1</a>
+                <a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_1_conteudo.php')">Página 1</a>
                 <a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_2_conteudo.html')">Página 2</a>
                 <a href="#" class="btn btn-primary" onclick="requisitarPagina('pagina_3_conteudo.html')">Página 3</a>
             </div>
